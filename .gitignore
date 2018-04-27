@@ -1,0 +1,6 @@
+#git files
+.idea
+
+#course files
+cms/*
+demo/*
