@@ -2,5 +2,4 @@
 .idea
 
 #course files
-cms/*
-demo/*
+assets/*
