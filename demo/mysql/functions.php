@@ -24,8 +24,15 @@ require "db.php";
      $username = mysqli_real_escape_string($connection, $_POST['username']); //sanitize data
      $password = mysqli_real_escape_string($connection, $_POST['password']);
 
+     $hashFormat = "$2y$10$";
+     $salt = "iusesomecrazystrings22";
+
+     $hashFAndSalt = $hashFormat . $salt;
+
+     $encryptedPassword = crypt($password, $hashFAndSalt);
+
      $query = "INSERT INTO users(username, password) ";
-     $query .= "VALUES ('$username', '$password')";
+     $query .= "VALUES ('$username', '$encryptedPassword')";
 
      $result =  mysqli_query($connection, $query);
 
