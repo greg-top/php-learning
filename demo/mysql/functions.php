@@ -21,8 +21,8 @@ require "db.php";
  function insertUserData() {
      //$connection exists in another file so make it GLOBAL
      global $connection;
-     $username = $_POST['username'];
-     $password = $_POST['password'];
+     $username = mysqli_real_escape_string($connection, $_POST['username']); //sanitize data
+     $password = mysqli_real_escape_string($connection, $_POST['password']);
 
      $query = "INSERT INTO users(username, password) ";
      $query .= "VALUES ('$username', '$password')";
